@@ -1,0 +1,24 @@
+<nav class="w-full flex justify-between items-center p-4 bg-indigo-800 shadow-lg">
+    <div class="logo">
+        <span routerLink="/home" class="text-gray-200 text-4xl flex justify-start items-center cursor-pointer">Movies&Series</span>
+    </div>
+    <div *ngIf="isLoggedIn" class="search relative">
+        <span class="absolute mt-1.5 mx-3"><i class="fa fa-search font-light" aria-hidden="true"></i></span>
+        <input type="text" placeholder="Keresés"
+            class="w-96 pt-2 pb-2 pl-9 rounded-l rounded-r-none text-gray-700">
+        <button class="bg-green-600 p-2 rounded-r text-white outline-none outline-0">Keresés</button>
+    </div>
+    <div class="nav-items">
+        <ng-container *ngIf="!isLoggedIn">
+            <span routerLink="/login" routerLinkActive="router-link-active"  class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">
+                Bejelentkezés</span>
+            <span routerLink="/register" class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">Regisztráció</span>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn">
+            <span routerLink="/home" class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">Főoldal</span>
+            <span routerLink="/movies" class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">Filmek</span>
+            <span routerLink="/series" class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">Sorozatok</span>
+            <span routerLink="/login" (click)="logout()" class="text-lg cursor-pointer text-gray-100 font-bold m-3 hover:underline hover:text-slate-100">Kijelentkezés</span>
+        </ng-container>      
+    </div>
+</nav>

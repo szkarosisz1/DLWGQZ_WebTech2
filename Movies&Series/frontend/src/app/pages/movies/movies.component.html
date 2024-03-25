@@ -1,0 +1,73 @@
+<div class="container mx-auto p-10">
+    <h1 class="text-5xl font-bold mb-4 text-center">Filmek</h1>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 text-lg">
+        <form>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-pretty font-bold mb-2" for="title">Cím:</label>
+                <input type="text" [(ngModel)]="title" [ngModelOptions]="{standalone: true}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" 
+                    placeholder="Film címe">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-pretty font-bold mb-2" for="year">Év:</label>
+                <input type="text" [(ngModel)]="year" [ngModelOptions]="{standalone: true}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="year" 
+                    placeholder="Megjelenési év">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-pretty font-bold mb-2" for="director">Rendező:</label>
+                <input type="text" [(ngModel)]="director" [ngModelOptions]="{standalone: true}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="director" 
+                    placeholder="Rendező neve">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-pretty font-bold mb-2" for="rating">Értékelés:</label>
+                <input type="text" [(ngModel)]="rating" [ngModelOptions]="{standalone: true}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rating" 
+                    placeholder="Értékelés">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-pretty font-bold mb-2" for="genre">Műfaj:</label>
+                <input type="text" [(ngModel)]="genre" [ngModelOptions]="{standalone: true}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="genre" 
+                    placeholder="Műfaj neve">
+            </div>
+            <button type="submit" (click)="saveMovies()" class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Film hozzáadása</button>
+        </form>
+    </div>
+</div>
+
+<div class="container mx-auto">
+    <h1 class="text-5xl font-bold mb-4 text-center">Filmek Listája</h1>
+    <div class="flex justify-center">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
+            <table class="table-auto w-full text-center">
+                <thead class="text-2xl">
+                    <tr>
+                        <th class="px-6 py-2">Cím</th>
+                        <th class="px-6 py-2">Év</th>
+                        <th class="px-6 py-2">Rendező</th>
+                        <th class="px-6 py-2">Értékelés</th>
+                        <th class="px-6 py-2">Műfaj</th>
+                        <th class="px-6 py-2">Opciók</th>
+                    </tr>
+                </thead>
+                    <tbody class="text-xl">
+                        <tr *ngFor="let movieItem of moviesArray">
+                            <td class="border px-6 py-2">{{ movieItem.title }}</td>
+                            <td class="border px-6 py-2">{{ movieItem.year }}</td>
+                            <td class="border px-6 py-2">{{ movieItem.director }}</td>
+                            <td class="border px-6 py-2">{{ movieItem.rating }}</td>
+                            <td class="border px-6 py-2">{{ movieItem.genre }}</td>
+                            <td class="border px-6 py-2">
+                            <button type="button" (click)="setUpdateMovies(movieItem)" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Módosítás</button>
+                            <button type="button" (click)="setDeleteMovies(movieItem)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Törlés</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
